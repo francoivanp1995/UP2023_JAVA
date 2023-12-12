@@ -1,0 +1,3 @@
+en esta capa se ubican todas las clases cuya responsabilidad
+sea la de presentación de los datos. Aquí van todos los componentes gráficos
+(pantallas por ejemplo) dedicados a mostrar los datos.

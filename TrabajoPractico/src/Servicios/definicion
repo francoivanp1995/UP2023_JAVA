@@ -1,0 +1,5 @@
+en esta capa va toda la denominada “lógica de
+negocio”. Es decir, todo lo que sea tomar los datos, procesarlos y hacer algo con
+ellos. Por ejemplo, mandar a la capa de datos a que los guarde. Por otro lado,
+también puede pedirle a la capa de datos que obtenga datos según ciertos
+parámetros y pasárselo a la capa de presentación para mostrarlos por pantalla.
