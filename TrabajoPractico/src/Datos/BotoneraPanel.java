@@ -1,7 +1,9 @@
 package Datos;
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -19,11 +21,19 @@ public class BotoneraPanel extends JPanel{
 	}
 	
 	public void armarBotoneraPanel() {
-		this.setLayout(new FlowLayout());
+		this.setLayout(new GridLayout(1,2));
 		okBoton = new JButton("ACEPTAR");
 		cancelarBoton = new JButton("CANCELAR");
-		
 		this.add(okBoton);
 		this.add(cancelarBoton);
 	}
+
+	public AbstractButton getOkBtn() {
+		return okBoton;
+	}
+	
+	public AbstractButton getCancelBtn() {
+		return cancelarBoton;
+	}
+	
 }

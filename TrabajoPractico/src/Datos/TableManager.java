@@ -69,7 +69,7 @@ public class TableManager {
 	
 	 public void insertarUsuarioAdmin() {
 	        Connection connection = DBManager.connect();
-	        String sql = "INSERT INTO USUARIOS (dni, nombre, apellido, nombreDeUsuario, email, contrasenia) VALUES (?, ?, ?, ?, ?, ?)";
+	        String sql = "INSERT INTO USUARIOS (dni, nombre, apellido, nombreDeUsuario, email, contrasenia, tipo) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	        
 	        try {
 	            PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -79,7 +79,7 @@ public class TableManager {
 	            preparedStatement.setString(4, "admin");
 	            preparedStatement.setString(5, "admin@example.com");
 	            preparedStatement.setString(6, "admin");
-//	            preparedStatement.setString(7, "ADMIN");
+	            preparedStatement.setString(7, "ADMIN");
 
 	            preparedStatement.executeUpdate();
 	            connection.commit();

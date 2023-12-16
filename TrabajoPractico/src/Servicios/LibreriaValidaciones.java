@@ -6,7 +6,7 @@ import Datos.ImplementacionValidarLongitudTextoMin;
 import Datos.ImplementacionValidarTextoVacio;
 import Datos.ImplementacionValidarValorNegativo;
 import Datos.ImplementacionValidarValorPositivo;
-import Datos.Usuario;
+import Datos.UsuarioBase;
 import Datos.UsuarioAlumno;
 import Datos.ValidationNumeroException;
 import Datos.ValidationTextoException;

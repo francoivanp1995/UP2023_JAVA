@@ -10,14 +10,12 @@ import Presentacion.PanelInicioSesion;
 import Presentacion.PanelManager;
 import Presentacion.PanelAdministradorUsuario;
 
-public class PantallaAdministradorListener implements ActionListener{
+public class PantallaAdministradorListenerTemaAlumno implements ActionListener{
 	
 	PanelAdministradorUsuario pantallaAdministrador;
 	PanelManager panelManager;
-	private UsuarioAlumno usuario;
-	private UsuarioDAO uDAO = new UsuarioDAOH2Impl();
 	
-	public PantallaAdministradorListener(PanelAdministradorUsuario pantallaAdministrador, PanelManager panelManager) {
+	public PantallaAdministradorListenerTemaAlumno(PanelAdministradorUsuario pantallaAdministrador, PanelManager panelManager) {
         this.pantallaAdministrador = pantallaAdministrador;
         this.panelManager = panelManager;
         pantallaAdministrador.getAlumnoCrearBoton().addActionListener(this);

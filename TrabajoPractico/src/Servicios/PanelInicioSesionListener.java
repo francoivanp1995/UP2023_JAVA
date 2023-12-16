@@ -31,7 +31,15 @@ public class PanelInicioSesionListener implements ActionListener {
                 autenticacion.validarCampo(password);
                 boolean autenticado = autenticacion.autenticar(login, password);
                 if (autenticado) {
-                    panelManager.mostrarPantallaAdministrador();
+                	String tipo = autenticacion.getTipoUsuario(login, password);
+                	if(tipo.equals("adm")) {
+                		panelManager.mostrarPantallaAdministrador();
+                	} else if (tipo.equals("prof")) {
+                		panelManager.mostrarPantallaProfesor();
+                	} else if (tipo.equals("alum")) {
+                		panelManager.mostrarPantallaAlumno();
+                	}
+                    
                 } else {
                 	panelInicioSesion.setMensajeValidacion("Usuario o contrasenia incorrectos.");
                 	panelInicioSesion.limpiarPanel();

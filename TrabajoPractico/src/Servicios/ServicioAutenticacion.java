@@ -49,4 +49,31 @@ public class ServicioAutenticacion {
 			throw new ValidationTextoException("El campo esta vacio");
 		}
 	}
+	
+	public String getTipoUsuario(String nombreDeUsuario, String contrasenia) {
+		Connection c = new DBManager().connect();
+		String sql = "SELECT * FROM usuarios WHERE nombreDeUsuario = ? AND contrasenia = ?";
+		try {
+			PreparedStatement statement = c.prepareStatement(sql);
+	        statement.setString(1, nombreDeUsuario);
+	        statement.setString(2, contrasenia);
+	        ResultSet result = statement.executeQuery();
+	        if (result.next()) {
+	            String tipoUsuario = result.getString("TIPO");
+	            c.close();
+	            return tipoUsuario;
+	        }
+        c.close();
+        return null;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return null;
+    } finally {
+    	try {
+    		c.close();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			}
+    	}
+	}
 }

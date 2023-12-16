@@ -11,7 +11,7 @@ import Datos.UsuarioDAO;
 import Datos.UsuarioDAOH2Impl;
 import Presentacion.PanelCrearAlumno;
 import Presentacion.PanelManager;
-import Servicios.CrearAlumnoServicio;
+import Servicios.UsuarioServicio;
 
 public class PanelCrearAlumnoListener implements ActionListener{
 	
@@ -19,7 +19,7 @@ public class PanelCrearAlumnoListener implements ActionListener{
 	PanelManager panelManager;
 	LibreriaValidaciones libreriaValidaciones;
 	Boolean verificado; 
-	CrearAlumnoServicio crearAlumnoServicio;
+	UsuarioServicio crearAlumnoServicio;
 	
 	public PanelCrearAlumnoListener(PanelCrearAlumno panelCrearAlumno, PanelManager panelManager) {
 		super();
@@ -35,8 +35,8 @@ public class PanelCrearAlumnoListener implements ActionListener{
 				libreriaValidaciones = new LibreriaValidaciones();
 				verificado = libreriaValidaciones.validarUsuario(usuario); 
 				if(verificado) {
-					UsuarioDAO dao = new UsuarioDAOH2Impl();
-					dao.crearUsuario(usuario);
+					crearAlumnoServicio = new UsuarioServicio();
+					crearAlumnoServicio.crearUsuario(usuario);
 					JOptionPane.showMessageDialog(panelCrearAlumno, "Alumno creado exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
 					panelCrearAlumno.limpiarPanel();
 				} else {
@@ -48,8 +48,6 @@ public class PanelCrearAlumnoListener implements ActionListener{
 				e2.printStackTrace();
 				JOptionPane.showMessageDialog(panelCrearAlumno, "Alumno no creado", "Atencion", JOptionPane.WARNING_MESSAGE);
 			}
-//			crearAlumnoServicio = new CrearAlumnoServicio(panelCrearAlumno,panelManager);
-//			crearAlumnoServicio.prueba();
 			
 		} else if (e.getSource() == panelCrearAlumno.getCancelarBoton()) {
 			try {

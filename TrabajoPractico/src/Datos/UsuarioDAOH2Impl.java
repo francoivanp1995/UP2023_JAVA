@@ -23,7 +23,7 @@ public class UsuarioDAOH2Impl implements UsuarioDAO{
 		Connection c = DBManager.connect();
 		try {
 			Statement s = c.createStatement();
-			String sql = "INSERT INTO usuarios (dni, nombre, apellido, nombreDeUsuario, email, contrasenia) VALUES ('" + dni + "', '" + nombre + "', '" + apellido + "', '" + nombreDeUsuario + "', '" + email + "', '" + contrasenia + "')";
+			String sql = "INSERT INTO usuarios (dni, nombre, apellido, nombreDeUsuario, email, contrasenia, tipo) VALUES ('" + dni + "', '" + nombre + "', '" + apellido + "', '" + nombreDeUsuario + "', '" + email + "', '" + contrasenia + "', '" + tipo + "')";
 			s.execute(sql);
 			c.commit();
 		} catch (SQLException e) {

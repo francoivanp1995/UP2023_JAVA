@@ -28,13 +28,14 @@ public class PanelCrearAlumno extends JPanel{
 	private JLabel nombreDeUsuarioLabel;
 	private JLabel emailLabel;
 	private JLabel contraseniaLabel;
-//	private JLabel tipoLabel;
+	private JLabel tipoLabel;
+	private JTextField tipoCampo;
 	private JTextField nombreCampo;
 	private JTextField apellidoCampo;
 	private JTextField nombreDeUsuarioCampo;
 	private JTextField emailCampo;
 	private JPasswordField contraseniaCampo;
-//	private JTextField tipoCampo;
+
 	private JButton crearBoton;
 	private JButton cancelarBoton;
 	
@@ -69,9 +70,9 @@ public class PanelCrearAlumno extends JPanel{
         contraseniaCampo = new JPasswordField();
         JPanel contraseniaPanel = createLabeledField(contraseniaLabel, contraseniaCampo);
 
-//        tipoLabel = new JLabel("Tipo");
-//        tipoCampo = new JTextField();
-//        JPanel tipoPanel = createLabeledField(tipoLabel, tipoCampo);
+        tipoLabel = new JLabel("Tipo");
+        tipoCampo = new JTextField();
+        JPanel tipoPanel = createLabeledField(tipoLabel, tipoCampo);
         
         crearBoton = new JButton("Crear");
         crearBoton.addActionListener(new PanelCrearAlumnoListener(this,panelManager));
@@ -90,7 +91,7 @@ public class PanelCrearAlumno extends JPanel{
         add(usuarioPanel);
         add(emailPanel);
         add(contraseniaPanel);
-//        add(tipoPanel);
+        add(tipoPanel);
         add(botoneraPanel);
 	}
 	
@@ -102,6 +103,7 @@ public class PanelCrearAlumno extends JPanel{
         usuario.setNombreDeUsuario(nombreDeUsuarioCampo.getText());
         usuario.setEmail(emailCampo.getText());
         usuario.setContrasenia(contraseniaCampo.getText());
+        usuario.setTipo(tipoCampo.getText());
         return usuario;
     }
 	
