@@ -104,7 +104,7 @@ public class PanelEditarCamposAlumno extends JPanel{
 		return cancelarBoton;
 	}
 	
-	public UsuarioAlumno setUsuarioIngresadoEnPanel() {
+	public UsuarioAlumno setUsuarioIngresadoDesdePanelEnUsuarioObjeto() {
         UsuarioAlumno usuario = new UsuarioAlumno();
         usuario.setDni(dniCampo.getText());
         usuario.setNombre(nombreCampo.getText());

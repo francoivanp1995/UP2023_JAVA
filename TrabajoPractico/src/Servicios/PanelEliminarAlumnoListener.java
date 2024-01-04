@@ -15,7 +15,6 @@ public class PanelEliminarAlumnoListener implements ActionListener{
 
 	private PanelEliminarAlumno panelEliminarAlumno;
 	private PanelManager panelManager;
-	private UsuarioDAO dao;
 	private UsuarioAlumno usuario;
 	private Boolean encontrado;
 	
@@ -29,22 +28,26 @@ public class PanelEliminarAlumnoListener implements ActionListener{
 		if(e.getSource() == panelEliminarAlumno.getCancelarBoton()) {
 			panelManager.mostrarPantallaAdministrador();
 		} else if (e.getSource() == panelEliminarAlumno.getBuscarBoton()) {
-			dao = new UsuarioDAOH2Impl();
 			usuario = new UsuarioAlumno();
+			UsuarioAlumnoServicio usuarioAlumnoServicio = new UsuarioAlumnoServicio();
 			usuario = panelEliminarAlumno.obtenerUsuarioIngresadoEnPanel();
-			encontrado = dao.buscarUsuario(usuario);
+			encontrado = usuarioAlumnoServicio.buscarUsuario(usuario);
 			manejarResultadoBusqueda();
 		} 
 	}
 	
+//Es mejor crear un metodo para manejar el resultado de la busqueda? Ese metodo no lo he implementado en crearAlumnoListener y actualizarAlumnoListener.
+	
 	private void manejarResultadoBusqueda() {
+		
         if (encontrado) {
             // TODO Si se encontró el usuario, habilitar el botón de editar
 //            panelModificarAlumno.getEditarBoton().setEnabled(true);
             JOptionPane.showMessageDialog(panelEliminarAlumno, "Alumno encontrado", "Resultado", JOptionPane.INFORMATION_MESSAGE);
             int resultado = JOptionPane.showConfirmDialog(panelEliminarAlumno, "Desea eliminar al usuario?", "Eliminar", JOptionPane.YES_NO_OPTION);
             if (resultado == JOptionPane.YES_OPTION) {
-                dao.eliminarUsuario(usuario);
+                UsuarioAlumnoServicio usuarioAlumnoServicio = new UsuarioAlumnoServicio();
+                usuarioAlumnoServicio.eliminarUsuario(usuario);
                 JOptionPane.showMessageDialog(panelEliminarAlumno, "Alumno eliminado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 panelEliminarAlumno.limpiarPanel();
                 panelManager.mostrarPantallaEliminarAlumno();    

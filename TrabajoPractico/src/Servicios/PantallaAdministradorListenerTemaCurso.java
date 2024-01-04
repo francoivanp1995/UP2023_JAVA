@@ -9,22 +9,23 @@ import Presentacion.PanelManager;
 
 public class PantallaAdministradorListenerTemaCurso implements ActionListener {
 
-	PanelAdministradorUsuario pantallaAdministrador;
-	PanelManager panelManager;
-	
+	protected PanelAdministradorUsuario pantallaAdministrador;
+	protected PanelManager panelManager;
+
 	public PantallaAdministradorListenerTemaCurso(PanelAdministradorUsuario pantallaAdministrador, PanelManager panelManager) {
-        this.pantallaAdministrador = pantallaAdministrador;
         this.panelManager = panelManager;
-//        pantallaAdministrador.getAlumnoCrearBoton().addActionListener(this);
+        this.pantallaAdministrador = pantallaAdministrador;
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		if(e.getSource() == pantallaAdministrador.getAlumnoCrearBoton()) {
-//            panelManager.mostrarPantallaCrearAlumno();
-//	} else if(e.getSource() == pantallaAdministrador.getAlumnoModificarBoton()) {
-//		panelManager.mostrarPantallaModificarAlumno();
-//	} else if (e.getSource() == pantallaAdministrador.getAlumnoEliminarBoton()) {
-//		panelManager.mostrarPantallaEliminarAlumno();
-//	}
+		if(e.getSource() == pantallaAdministrador.getcursoCrearBoton()) {
+            panelManager.mostrarPantallaCrearCurso();
+	} else if(e.getSource() == pantallaAdministrador.getCursoModificarBoton()) {
+		panelManager.mostarPantallaModificarCurso();
+	} else if (e.getSource() == pantallaAdministrador.getCursoEliminarBoton()) {
+		panelManager.mostrarPantallaEliminarCurso();
+	} else if (e.getSource() == pantallaAdministrador.getCursoReporteBoton()) {
+		panelManager.mostrarPantallaReporteCurso();
+	}
 }
 }

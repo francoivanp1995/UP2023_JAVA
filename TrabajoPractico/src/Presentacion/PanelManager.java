@@ -20,6 +20,13 @@ public class PanelManager {
 	private PanelModificarAlumno panelModificarAlumno;
 	private PanelEditarCamposAlumno panelEditarCamposAlumno;
 	
+	//todo
+	private PanelCrearCurso panelCrearCurso;
+	private PanelModificarCurso panelModificarCurso;
+	private PanelEliminarCurso panelEliminarCurso;
+	private PanelReporteCurso panelReporteCurso;
+	
+	
 	public void armarManager() {
 		frame = new JFrame("SISTEMA DE ALUMNOS");
 		frame.setBounds(100, 100, 500, 500);
@@ -33,6 +40,12 @@ public class PanelManager {
 		panelEliminarAlumno = new PanelEliminarAlumno(this);
 		panelModificarAlumno = new PanelModificarAlumno(this);
 		panelEditarCamposAlumno = new PanelEditarCamposAlumno(this);
+		
+		panelCrearCurso = new PanelCrearCurso(this);
+		panelModificarCurso = new PanelModificarCurso(this);
+		panelEliminarCurso = new PanelEliminarCurso(this);
+		panelReporteCurso = new PanelReporteCurso(this);
+		
 		
 		frame.add(pantallaInicioSesion);
 		frame.add(pantallaAdministrador);
@@ -103,4 +116,31 @@ public class PanelManager {
 		frame.getContentPane().repaint();
 	}
 	
+	public void mostrarPantallaCrearCurso() {
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(panelCrearCurso);
+		frame.getContentPane().validate();
+		frame.getContentPane().repaint();
+	}
+	
+	public void mostarPantallaModificarCurso() {
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(panelModificarCurso);
+		frame.getContentPane().validate();
+		frame.getContentPane().repaint();
+	}
+	
+	public void mostrarPantallaEliminarCurso() {
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(panelEliminarCurso);
+		frame.getContentPane().validate();
+		frame.getContentPane().repaint();
+	}
+	
+	public void mostrarPantallaReporteCurso() {
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(panelReporteCurso);
+		frame.getContentPane().validate();
+		frame.getContentPane().repaint();
+	}
 }

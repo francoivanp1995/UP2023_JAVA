@@ -11,7 +11,7 @@ import Datos.UsuarioDAO;
 import Datos.UsuarioDAOH2Impl;
 import Presentacion.PanelCrearAlumno;
 import Presentacion.PanelManager;
-import Servicios.UsuarioServicio;
+import Servicios.UsuarioAlumnoServicio;
 
 public class PanelCrearAlumnoListener implements ActionListener{
 	
@@ -19,7 +19,7 @@ public class PanelCrearAlumnoListener implements ActionListener{
 	PanelManager panelManager;
 	LibreriaValidaciones libreriaValidaciones;
 	Boolean verificado; 
-	UsuarioServicio crearAlumnoServicio;
+	UsuarioAlumnoServicio crearAlumnoServicio;
 	
 	public PanelCrearAlumnoListener(PanelCrearAlumno panelCrearAlumno, PanelManager panelManager) {
 		super();
@@ -35,7 +35,7 @@ public class PanelCrearAlumnoListener implements ActionListener{
 				libreriaValidaciones = new LibreriaValidaciones();
 				verificado = libreriaValidaciones.validarUsuario(usuario); 
 				if(verificado) {
-					crearAlumnoServicio = new UsuarioServicio();
+					crearAlumnoServicio = new UsuarioAlumnoServicio();
 					crearAlumnoServicio.crearUsuario(usuario);
 					JOptionPane.showMessageDialog(panelCrearAlumno, "Alumno creado exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
 					panelCrearAlumno.limpiarPanel();

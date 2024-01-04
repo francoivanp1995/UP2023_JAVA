@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import Datos.BotoneraPanel;
 import Servicios.PantallaAdministradorListenerTemaAlumno;
+import Servicios.PantallaAdministradorListenerTemaCurso;
 
 public class PanelAdministradorUsuario extends JPanel{
 
@@ -43,12 +44,16 @@ public class PanelAdministradorUsuario extends JPanel{
 		setLayout(new GridLayout(4,5));
     
 	        cursoPanel = new JPanel(new GridLayout(1,5));
+	        
 	        cursoLabel = new JLabel("Curso");
 	        cursoCrearBoton = new JButton("Crear");
-//	        cursoCrearBoton.addActionListener(new PantallaAdministradorListenerTemaAlumno(this, panelManager));
+	        cursoCrearBoton.addActionListener(new PantallaAdministradorListenerTemaCurso(this,panelManager));
 	        curoModificarBoton = new JButton("Modificar");
+	        curoModificarBoton.addActionListener(new PantallaAdministradorListenerTemaCurso(this, panelManager));
 	        cursoEliminarBoton = new JButton("Eliminar");
+	        cursoEliminarBoton.addActionListener(new PantallaAdministradorListenerTemaCurso(this, panelManager));
 	        cursoReporteBoton = new JButton("Reporte");
+	        cursoReporteBoton.addActionListener(new PantallaAdministradorListenerTemaCurso(this, panelManager));
 	        cursoPanel.add(cursoLabel);
 	        cursoPanel.add(cursoCrearBoton);
 	        cursoPanel.add(curoModificarBoton);
@@ -98,5 +103,20 @@ public class PanelAdministradorUsuario extends JPanel{
 	public JButton getAlumnoEliminarBoton() {
 	    return alumnoEliminarBoton;
 	}
+	
+	public JButton getcursoCrearBoton() {
+		return cursoCrearBoton;
+	}
 
+	public JButton getCursoModificarBoton() {
+		return curoModificarBoton;
+	}
+	
+	public JButton getCursoEliminarBoton() {
+		return cursoEliminarBoton;
+	}
+	
+	public JButton getCursoReporteBoton() {
+		return cursoReporteBoton;
+	}
 }

@@ -21,7 +21,7 @@ public class PanelEditarCamposAlumnoListener implements ActionListener{
 	private PanelModificarAlumno panelModificarAlumno;
 	private boolean validado;
 	private Boolean verificado;
-	private UsuarioServicio usuarioServicio;
+	private UsuarioAlumnoServicio usuarioServicio;
 	
 	public PanelEditarCamposAlumnoListener(PanelEditarCamposAlumno panelEditarCamposAlumno, PanelManager panelManager) {
 		this.panelEditarCamposAlumno = panelEditarCamposAlumno;
@@ -33,12 +33,12 @@ public class PanelEditarCamposAlumnoListener implements ActionListener{
 		if(e.getSource() == panelEditarCamposAlumno.getGuardarBoton()) {
 			try {
 				UsuarioAlumno usuario  = new UsuarioAlumno();
-				usuario = panelEditarCamposAlumno.setUsuarioIngresadoEnPanel();
+				usuario = panelEditarCamposAlumno.setUsuarioIngresadoDesdePanelEnUsuarioObjeto();
 				libreriaValidaciones = new LibreriaValidaciones();
 
 				verificado = libreriaValidaciones.validarUsuario(usuario);
 				if(verificado) {
-					usuarioServicio = new UsuarioServicio();
+					usuarioServicio = new UsuarioAlumnoServicio();
 					usuarioServicio.actualizarUsuario(usuario);
 					JOptionPane.showMessageDialog(panelEditarCamposAlumno, "Alumno Modificado","Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					panelEditarCamposAlumno.limpiarPanel();

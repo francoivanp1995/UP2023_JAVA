@@ -8,9 +8,9 @@ import Datos.UsuarioDAOH2Impl;
 import Presentacion.PanelCrearAlumno;
 import Presentacion.PanelManager;
 
-public class UsuarioServicio {
+public class UsuarioAlumnoServicio {
 	
-	public UsuarioServicio() {
+	public UsuarioAlumnoServicio() {
 		
 	}
 	
@@ -22,5 +22,15 @@ public class UsuarioServicio {
 	public void actualizarUsuario(UsuarioAlumno usuario) {
 		UsuarioDAO dao = new UsuarioDAOH2Impl();
 		dao.actualizarUsuario(usuario);
+	}
+	
+	public void eliminarUsuario(UsuarioAlumno usuario) {
+		UsuarioDAO dao = new UsuarioDAOH2Impl();
+		dao.eliminarUsuario(usuario);
+	}
+	
+	public boolean buscarUsuario(UsuarioAlumno usuario) {
+		UsuarioDAO dao = new UsuarioDAOH2Impl();
+		return (dao.buscarUsuario(usuario));
 	}
 }
