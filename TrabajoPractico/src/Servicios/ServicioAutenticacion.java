@@ -41,14 +41,10 @@ public class ServicioAutenticacion {
 	}
 
 	public void validarCampo(String campo) throws ValidationTextoException {
-		LibreriaValidaciones libreriaValidaciones = new LibreriaValidaciones();
-		try {
-			libreriaValidaciones.validarTextoVacio(campo);
-		} catch (ValidationTextoException e) {
-			e.printStackTrace();
-			throw new ValidationTextoException("El campo esta vacio");
-		}
+	    LibreriaValidaciones libreriaValidaciones = new LibreriaValidaciones();
+	    libreriaValidaciones.validarTextoVacio(campo);
 	}
+
 	
 	public String getTipoUsuario(String nombreDeUsuario, String contrasenia) {
 		Connection c = new DBManager().connect();

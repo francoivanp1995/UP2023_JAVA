@@ -111,7 +111,7 @@ public class TableManager {
 	            return false;
 	        }
 	    }
-	 
+ 
 	 public void prerequisitosTabla() {
 	        if (!tablaUsuariosExiste()) {
 	            crearTablaUsuarios();
@@ -119,6 +119,54 @@ public class TableManager {
 
 	        if (!usuarioAdminExiste()) {
 	            insertarUsuarioAdmin();
+	        }
+	    }
+	 
+	 
+	 //Curso
+	 
+	 public void crearTablaCursos() {
+	        Connection c = DBManager.connect();
+	        String sql = "CREATE TABLE CURSO (" +
+	                     "Nombre VARCHAR(256), " +
+	                     "Descripcion VARCHAR(256), " +
+	                     "Precio INT, " +
+	                     "CupoMaximo INT, " +
+	                     "ParametroAprobacion INT)";
+	        try {
+	            Statement s = c.createStatement();
+	            s.execute(sql);
+	        } catch (SQLException e) {
+	            try {
+	                c.rollback();
+	                e.printStackTrace();
+	            } catch (SQLException e1) {
+	                e1.printStackTrace();
+	            }
+	        } finally {
+	            try {
+	                c.close();
+	            } catch (SQLException e2) {
+	                e2.printStackTrace();
+	            }
+	        }
+	    }
+	 
+	 public boolean tablaCursosExiste() {
+	        Connection connection = DBManager.connect();
+	        try {
+	            DatabaseMetaData metaData = connection.getMetaData();
+	            ResultSet result = metaData.getTables(null, null, "CURSO", null);
+	            return result.next();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
+	 
+	  public void prerequisitosTablaCursos() {
+	        if (!tablaCursosExiste()) {
+	            crearTablaCursos();
 	        }
 	    }
 }

@@ -15,6 +15,8 @@ public class PantallaAdministradorListenerTemaCurso implements ActionListener {
 	public PantallaAdministradorListenerTemaCurso(PanelAdministradorUsuario pantallaAdministrador, PanelManager panelManager) {
         this.panelManager = panelManager;
         this.pantallaAdministrador = pantallaAdministrador;
+//        pantallaAdministrador.getcursoCrearBoton().addActionListener(this);
+//        pantallaAdministrador.getCursoEliminarBoton().addActionListener(this);
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
