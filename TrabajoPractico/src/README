@@ -1,0 +1,13 @@
+Estimado Profesor,
+
+Pasos para ejecutar el sistema.
+
+1. Crear la base de datos utilizando el shell script que se encuentra en la carpeta /H2/bin/crearDB.sh.
+	1.1 Ajustar el path del script a la ruta que desee para crear la base de datos.
+	1.2 En esa ruta debe estar el archivo h2xxx.jar.
+	
+2. Cambiar el valor de la variable String DB_URL en la clase DBManager para apuntar a la base de datos.
+	
+Credenciales:
+1. login: admin
+2. contrasenia: admin
