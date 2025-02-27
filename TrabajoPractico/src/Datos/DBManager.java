@@ -8,7 +8,7 @@ public class DBManager {
 	
 	private static final String DB_DRIVER = "org.h2.Driver";
 	//Cambiar DB_URL a la base de datos deseada.
-	private static final String DB_URL = "jdbc:h2://home/francopaco/ejemplo_db/tabla01";
+	private static final String DB_URL = "jdbc:h2://home/francopaco/ejemplo_db/UP_LAB_01_FINAL";
 	private static final String DB_USER = "sa";
 	private static final String DB_PASSWORD = "";
 	

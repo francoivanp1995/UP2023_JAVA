@@ -73,8 +73,13 @@ public class PanelEliminarCurso extends JPanel {
     }
 
     public CursoClase obtenerCursoIngresadoEnPanel() {
-        CursoClase curso = new CursoClase();
-        curso.setNombreCurso(nombreCursoCampo.getText());
+    	CursoClase curso = new CursoClase();
+    	try {
+    		curso.setNombreCurso(nombreCursoCampo.getText());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
         return curso;
     }
 

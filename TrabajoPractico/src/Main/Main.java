@@ -14,7 +14,7 @@ public class Main {
 
 		try {
 			TableManager tablaManager = new TableManager();
-			tablaManager.prerequisitosTabla();
+			tablaManager.prerequisitosTablas();
 			Iniciador iniciador = new Iniciador();
 			iniciador.iniciarManager();
 			iniciador.showFrame();

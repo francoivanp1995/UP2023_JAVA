@@ -90,8 +90,8 @@ public class PanelCrearCurso extends JPanel {
         setLayout(new GridLayout(6, 1));
         
         add(nombreCursoPanel);
-        add(precioCursoPanel);
         add(descripcionCursoPanel);
+        add(precioCursoPanel);
         add(cupoCursoPanel);
         add(parametroAprobacionCursoPanel);
         add(botoneraPanel);
@@ -117,27 +117,31 @@ public class PanelCrearCurso extends JPanel {
     }
 
     public CursoClase obtenerCursoIngresadoEnPanel() {
-        CursoClase curso = new CursoClase();
-        curso.setNombreCurso(nombreCursoCampo.getText());
-        curso.setDescripcionCurso(descripcionCursoCampo.getText());
+    	CursoClase curso = new CursoClase();
         try {
+        	
+            curso.setNombreCurso(nombreCursoCampo.getText());
+            curso.setDescripcionCurso(descripcionCursoCampo.getText());
             int precioCurso = Integer.parseInt(precioCursoCampo.getText());
             int cupoMaxCurso = Integer.parseInt(cupoCursoCampo.getText());
+            int parametroAprobacion = Integer.parseInt(parametroAprobacionCursoCampo.getText());
             curso.setPrecioCurso(precioCurso);
             curso.setCupoMaximoCurso(cupoMaxCurso);
+            curso.setParametroAprobacionCurso(parametroAprobacion);
         } catch (NumberFormatException e) {
             // Manejar el caso en que la entrada no sea un número válido
             // Aquí puedes mostrar un mensaje de error o tomar alguna otra acción apropiada
             e.printStackTrace();
         }
+        
         return curso;
     }
 
     public void limpiarPanel() {
         nombreCursoCampo.setText("");
         descripcionCursoCampo.setText("");
-        parametroAprobacionCursoCampo.setText("");
         precioCursoCampo.setText("");
         cupoCursoCampo.setText("");
+        parametroAprobacionCursoCampo.setText("");
     }
 }

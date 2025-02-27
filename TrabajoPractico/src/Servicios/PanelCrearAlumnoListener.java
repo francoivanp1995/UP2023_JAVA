@@ -37,10 +37,10 @@ public class PanelCrearAlumnoListener implements ActionListener{
 				if(verificado) {
 					crearAlumnoServicio = new UsuarioAlumnoServicio();
 					crearAlumnoServicio.crearUsuario(usuario);
-					JOptionPane.showMessageDialog(panelCrearAlumno, "Alumno creado exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(panelCrearAlumno, "Usuario creado exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
 					panelCrearAlumno.limpiarPanel();
 				} else {
-					JOptionPane.showMessageDialog(panelCrearAlumno, "Alumno no creado", "Atencion", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(panelCrearAlumno, "Usuario no creado", "Atencion", JOptionPane.WARNING_MESSAGE);
 					panelCrearAlumno.limpiarPanel();
 				}
 				

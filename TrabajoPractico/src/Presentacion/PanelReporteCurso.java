@@ -2,7 +2,10 @@ package Presentacion;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +18,10 @@ public class PanelReporteCurso extends JPanel {
     protected PanelManager panelManager;
     private JButton generarReporteButton;
     private JButton cancelarButton;
-    private List<CursoClase> listaCursos; // Supongamos que tienes una lista de cursos
+    private JTable cursoTable;
+    private CursoTableModel tableModel;
+    private List<CursoClase> listaCursos;
+    
 
     public PanelReporteCurso(PanelManager panelManager) {
         this.panelManager = panelManager;
@@ -30,11 +36,16 @@ public class PanelReporteCurso extends JPanel {
         JLabel titleLabel = new JLabel("Reporte de Cursos");
         generarReporteButton = new JButton("Generar Reporte");
         cancelarButton = new JButton("Cancelar");
-        
+
+        // Inicializar el modelo de la tabla
+        tableModel = new CursoTableModel();
+        cursoTable = new JTable(tableModel);
+
         // Añadir los componentes al panel
         add(titleLabel);
         add(generarReporteButton);
         add(cancelarButton);
+        add(new JScrollPane(cursoTable)); // Añadir la tabla dentro de un JScrollPane
     }
 
     private void setupLayout() {
@@ -46,12 +57,10 @@ public class PanelReporteCurso extends JPanel {
         generarReporteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes generar y mostrar el reporte
                 generarReporte();
             }
         });
 
-        // ActionListener para el botón de cancelar
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,15 +71,22 @@ public class PanelReporteCurso extends JPanel {
     }
 
     private void generarReporte() {
-        // Crear una instancia de CursoTableModel con la lista de cursos
-        CursoTableModel tableModel = new CursoTableModel();
-
-        // Luego puedes usar esta instancia para mostrar los datos en una tabla o en otro componente visual
-        // Por ejemplo, podrías crear una tabla y establecer el modelo de tabla como el CursoTableModel
-        // O cualquier otro método de visualización que prefieras
+        // Suponemos que listaCursos ha sido llenada con los datos correspondientes
+        if (listaCursos != null && !listaCursos.isEmpty()) {
+            tableModel.setContenido(listaCursos);
+        } else {
+            // Mostrar un mensaje si no hay datos para mostrar
+            JOptionPane.showMessageDialog(this, "No hay datos para generar el reporte.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     private void cerrarPanel() {
         setVisible(false);
+        panelManager.mostrarPantallaAdministrador();
+    }
+
+    // Método para establecer la lista de cursos desde fuera del panel
+    public void setListaCursos(List<CursoClase> listaCursos) {
+        this.listaCursos = listaCursos;
     }
 }

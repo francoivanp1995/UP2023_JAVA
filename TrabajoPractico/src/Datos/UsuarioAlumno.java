@@ -9,6 +9,7 @@ public class UsuarioAlumno implements UsuarioGettersYSetters{
 	private String email;
 	private String contrasenia;
 	private String tipo;
+	private int limiteCursos;
 	
 	public UsuarioAlumno() {
 		
@@ -93,5 +94,12 @@ public class UsuarioAlumno implements UsuarioGettersYSetters{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
+	
+	public int getLimiteCursos() {
+        return limiteCursos;
+    }
+	
+	public void setLimiteCursos(int limiteCursos) {
+        this.limiteCursos = limiteCursos;
+    }
 }

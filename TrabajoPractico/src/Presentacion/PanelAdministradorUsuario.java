@@ -23,14 +23,14 @@ public class PanelAdministradorUsuario extends JPanel{
 	private JButton cursoEliminarBoton;
 	private JButton cursoReporteBoton;
 	
-	private JPanel profesorPanel;
-	private JLabel profesorLabel;
-	private JButton profesorCrearBoton;
-	private JButton profesorModificarBoton;
-	private JButton profesorEliminarBoton;
+//	private JPanel profesorPanel;
+//	private JLabel profesorLabel;
+//	private JButton profesorCrearBoton;
+//	private JButton profesorModificarBoton;
+//	private JButton profesorEliminarBoton;
 	
-	private JPanel alumnoPanel;
-	private JLabel alumnoLabel;
+	private JPanel usuarioPanel;
+	private JLabel usuarioLabel;
 	private JButton alumnoCrearBoton;
 	private JButton alumnoModificarBoton;
 	private JButton alumnoEliminarBoton;
@@ -60,32 +60,32 @@ public class PanelAdministradorUsuario extends JPanel{
 	        cursoPanel.add(cursoEliminarBoton);
 	        cursoPanel.add(cursoReporteBoton);
 
-	        profesorPanel = new JPanel(new GridLayout(1,4));
-	        profesorLabel = new JLabel("Profesores");
-	        profesorCrearBoton = new JButton("Crear");
-	        profesorModificarBoton = new JButton("Modificar");
-	        profesorEliminarBoton = new JButton("Eliminar");
-	        profesorPanel.add(profesorLabel);
-	        profesorPanel.add(profesorCrearBoton);
-	        profesorPanel.add(profesorModificarBoton);
-	        profesorPanel.add(profesorEliminarBoton);
+//	        profesorPanel = new JPanel(new GridLayout(1,4));
+//	        profesorLabel = new JLabel("Profesores");
+//	        profesorCrearBoton = new JButton("Crear");
+//	        profesorModificarBoton = new JButton("Modificar");
+//	        profesorEliminarBoton = new JButton("Eliminar");
+//	        profesorPanel.add(profesorLabel);
+//	        profesorPanel.add(profesorCrearBoton);
+//	        profesorPanel.add(profesorModificarBoton);
+//	        profesorPanel.add(profesorEliminarBoton);
 
-	        alumnoPanel = new JPanel(new GridLayout(1,4));
-	        alumnoLabel = new JLabel("Alumnos");
+	        usuarioPanel = new JPanel(new GridLayout(1,4));
+	        usuarioLabel = new JLabel("Usuarios");
 	        alumnoCrearBoton = new JButton("Crear");
 	        alumnoCrearBoton.addActionListener(new PantallaAdministradorListenerTemaAlumno(this,panelManager));
 	        alumnoModificarBoton = new JButton("Modificar");
 	        alumnoModificarBoton.addActionListener(new PantallaAdministradorListenerTemaAlumno(this, panelManager));
 	        alumnoEliminarBoton = new JButton("Eliminar");
 	        alumnoEliminarBoton.addActionListener(new PantallaAdministradorListenerTemaAlumno(this,panelManager));
-	        alumnoPanel.add(alumnoLabel);
-	        alumnoPanel.add(alumnoCrearBoton);
-	        alumnoPanel.add(alumnoModificarBoton);
-	        alumnoPanel.add(alumnoEliminarBoton);
+	        usuarioPanel.add(usuarioLabel);
+	        usuarioPanel.add(alumnoCrearBoton);
+	        usuarioPanel.add(alumnoModificarBoton);
+	        usuarioPanel.add(alumnoEliminarBoton);
 
 	        add(cursoPanel);
-	        add(profesorPanel);
-	        add(alumnoPanel);
+//	        add(profesorPanel);
+	        add(usuarioPanel);
 	        
 //	        add(cursoPanel, BorderLayout.NORTH);
 //	        add(profesorPanel, BorderLayout.CENTER);

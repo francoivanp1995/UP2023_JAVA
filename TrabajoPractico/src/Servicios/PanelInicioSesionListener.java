@@ -28,12 +28,11 @@ public class PanelInicioSesionListener implements ActionListener {
 
             @Override
             public void keyTyped(KeyEvent e) {
-                // No se necesita implementación
+
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                // No se necesita implementación
             }
         };
 

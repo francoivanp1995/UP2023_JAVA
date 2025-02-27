@@ -1,13 +1,13 @@
-package Datos;
+package Presentacion;
 
 import java.awt.GridLayout;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 
-import Presentacion.PanelManager;
+import Datos.BotonesOpciones;
 
-public class BotonesOpcionesCursoProfesor extends BotonesOpciones{
+public class PanelOpcionesCursoProfesor extends BotonesOpciones{
 
 	protected JButton calendarioBoton;
 	protected JButton evaluacionesBoton;
@@ -15,7 +15,7 @@ public class BotonesOpcionesCursoProfesor extends BotonesOpciones{
 	protected JButton contenidoBoton;
 	
 	
-	public BotonesOpcionesCursoProfesor(PanelManager panelManager) {
+	public PanelOpcionesCursoProfesor(PanelManager panelManager) {
 		super(panelManager);
 		// TODO Auto-generated constructor stub
 	}
@@ -51,5 +51,6 @@ public class BotonesOpcionesCursoProfesor extends BotonesOpciones{
 	public AbstractButton getContenidoBoton() {
 		return contenidoBoton;
 	}
+
 
 }

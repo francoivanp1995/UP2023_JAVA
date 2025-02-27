@@ -9,17 +9,16 @@ import javax.swing.JPanel;
 
 import Datos.AbstractPantallaUsuarioLogueadoPanel;
 import Datos.BotoneraPanel;
-import Datos.BotonesOpcionesAlumnoProfesor;
 import Datos.PantallaProfesorUsuario;
 
-public class LLamadoAPanelProfesorUsuario extends AbstractPantallaUsuarioLogueadoPanel{
+public class DO_NOT_USE_LLamadoAPanelProfesorUsuario extends AbstractPantallaUsuarioLogueadoPanel{
 	
 	protected JPanel cursoPanel;
 	protected JLabel cursoLabel;
 	protected PanelManager panelManager;
 	protected BotoneraPanel botoneraPanel;
 	
-	public LLamadoAPanelProfesorUsuario(PanelManager panelManager) {
+	public DO_NOT_USE_LLamadoAPanelProfesorUsuario(PanelManager panelManager) {
 		super(panelManager);
 		this.armarPantallaPanel();
 	}

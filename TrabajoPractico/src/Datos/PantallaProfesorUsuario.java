@@ -5,21 +5,23 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 
+import Presentacion.PanelOpcionesAlumnoProfesor;
+import Presentacion.PanelOpcionesCursoProfesor;
 import Presentacion.PanelManager;
 
 //ToDo: renombrar a panel principal del Usuario Profesor.
 
 public class PantallaProfesorUsuario extends AbstractPantallaUsuarioLogueadoPanel{
 	
-	BotonesOpcionesAlumnoProfesor botonesOpcionesAlumnoProfesor;
-	BotonesOpcionesCursoProfesor botonesOpcionesCursoProfesor;
+	PanelOpcionesAlumnoProfesor botonesOpcionesAlumnoProfesor;
+	PanelOpcionesCursoProfesor botonesOpcionesCursoProfesor;
 	protected PanelManager panelManager;
 
 	public PantallaProfesorUsuario(PanelManager panelManager) {
 		super(panelManager);
 	}
 
-//	@Override
+//	
 //	public void armarFormulario() {
 //		this.setLayout(new GridLayout(4,4));
 //		

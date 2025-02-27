@@ -9,30 +9,44 @@ import java.sql.SQLException;
 
 public class TableManager {
 	
-	public void crearTablaUsuarios() {
-		
-		//Todo poner DNI como PKey.
-		Connection c = DBManager.connect();
-		String sql = "CREATE TABLE USUARIOS ( dni VARCHAR(256), nombre VARCHAR(256), apellido VARCHAR(256), nombreDeUsuario VARCHAR(256), email VARCHAR (256), contrasenia VARCHAR(25), tipo VARCHAR (5))";
-		try {
-			Statement s = c.createStatement();
-			s.execute(sql);
-		} catch (SQLException e) {
-			try {
-				c.rollback();
-				e.printStackTrace();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-		} finally {
-			try {
-				c.close();
-			} catch (SQLException e2) {
-				e2.printStackTrace();
-			}
-		}
+	public void prerequisitosTablas() {
+		prerequisitosTablaUsuario();
+		prerequisitosTablaCursos();
+		prerequisitosTablaCalificaciones();
 	}
 	
+	
+	// Tabla usuarios
+	public void crearTablaUsuarios() {
+	    Connection c = DBManager.connect();
+	    String sql = "CREATE TABLE USUARIOS (" +
+	                 "dni VARCHAR(256) PRIMARY KEY, " +
+	                 "nombre VARCHAR(256), " +
+	                 "apellido VARCHAR(256), " +
+	                 "nombreDeUsuario VARCHAR(256), " +
+	                 "email VARCHAR(256), " +
+	                 "contrasenia VARCHAR(25), " +
+	                 "tipo VARCHAR(5)" +
+	                 ")";
+	    try {
+	        Statement s = c.createStatement();
+	        s.execute(sql);
+	    } catch (SQLException e) {
+	        try {
+	            c.rollback();
+	            e.printStackTrace();
+	        } catch (SQLException e1) {
+	            e1.printStackTrace();
+	        }
+	    } finally {
+	        try {
+	            c.close();
+	        } catch (SQLException e2) {
+	            e2.printStackTrace();
+	        }
+	    }
+	}
+
 	public void eliminarTablaUsuarios() {
 		Connection c = DBManager.connect();
 		String sql = "DROP TABLE USUARIOS";
@@ -79,7 +93,7 @@ public class TableManager {
 	            preparedStatement.setString(4, "admin");
 	            preparedStatement.setString(5, "admin@example.com");
 	            preparedStatement.setString(6, "admin");
-	            preparedStatement.setString(7, "ADMIN");
+	            preparedStatement.setString(7, "adm");
 
 	            preparedStatement.executeUpdate();
 	            connection.commit();
@@ -112,7 +126,7 @@ public class TableManager {
 	        }
 	    }
  
-	 public void prerequisitosTabla() {
+	 public void prerequisitosTablaUsuario() {
 	        if (!tablaUsuariosExiste()) {
 	            crearTablaUsuarios();
 	        }
@@ -168,5 +182,56 @@ public class TableManager {
 	        if (!tablaCursosExiste()) {
 	            crearTablaCursos();
 	        }
+	    }
+	  
+	  
+	  //TablaCalificaciones
+	  
+	  public void crearTablaCalificaciones() {
+		    Connection c = DBManager.connect();
+		    String sql = "CREATE TABLE CALIFICACIONES ("
+		               + "id INT AUTO_INCREMENT PRIMARY KEY, "
+		               + "idAlumno VARCHAR(256), "
+		               + "nombreCurso VARCHAR(256), "
+		               + "calificacion DECIMAL(5, 2), "
+		               + "fechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
+		               + "FOREIGN KEY (idAlumno) REFERENCES USUARIOS(dni)"
+		               + ")";
+		    try {
+		        Statement s = c.createStatement();
+		        s.execute(sql);
+		    } catch (SQLException e) {
+		        try {
+		            c.rollback();
+		            e.printStackTrace();
+		        } catch (SQLException e1) {
+		            e1.printStackTrace();
+		        }
+		    } finally {
+		        try {
+		            c.close();
+		        } catch (SQLException e2) {
+		            e2.printStackTrace();
+		        }
+		    }
+		}
+
+	    
+	    public boolean tablaCalificacionesExiste() {
+	        Connection connection = DBManager.connect();
+	        try {
+	            DatabaseMetaData metaData = connection.getMetaData();
+	            ResultSet result = metaData.getTables(null, null, "CALIFICACIONES", null);
+	            return result.next();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
+	    
+	    public void prerequisitosTablaCalificaciones() {
+	        if (!tablaCalificacionesExiste()) {
+	            crearTablaCalificaciones();
+	        } 
 	    }
 }

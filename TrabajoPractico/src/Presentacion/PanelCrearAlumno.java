@@ -7,10 +7,13 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.h2.jdbc.JdbcBatchUpdateException;
 
@@ -18,8 +21,7 @@ import Datos.UsuarioAlumno;
 import Servicios.LibreriaValidaciones;
 import Servicios.PanelCrearAlumnoListener;
 
-public class PanelCrearAlumno extends JPanel{
-	
+public class PanelCrearAlumno extends JPanel {
 	
 	private JLabel nombreLabel;
 	private JLabel apellidoLabel;
@@ -29,26 +31,24 @@ public class PanelCrearAlumno extends JPanel{
 	private JLabel emailLabel;
 	private JLabel contraseniaLabel;
 	private JLabel tipoLabel;
-	private JTextField tipoCampo;
+	private JComboBox<String> tipoComboBox;
 	private JTextField nombreCampo;
 	private JTextField apellidoCampo;
 	private JTextField nombreDeUsuarioCampo;
 	private JTextField emailCampo;
 	private JPasswordField contraseniaCampo;
+	private String tipoAlumno = "alm";
 
 	private JButton crearBoton;
 	private JButton cancelarBoton;
 	
 	@SuppressWarnings("deprecation")
-	
 	public PanelCrearAlumno(PanelManager panelManager) {
-		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         nombreLabel = new JLabel("Nombre");
         nombreCampo = new JTextField();
         JPanel nombrePanel = createLabeledField(nombreLabel, nombreCampo);
-        
 
         apellidoLabel = new JLabel("Apellido");
         apellidoCampo = new JTextField();
@@ -71,18 +71,19 @@ public class PanelCrearAlumno extends JPanel{
         JPanel contraseniaPanel = createLabeledField(contraseniaLabel, contraseniaCampo);
 
         tipoLabel = new JLabel("Tipo");
-        tipoCampo = new JTextField();
-        JPanel tipoPanel = createLabeledField(tipoLabel, tipoCampo);
+        String[] tipos = {"alm", "prof", "adm"};
+        tipoComboBox = new JComboBox<>(tipos);
+        tipoComboBox.setSelectedItem(tipoAlumno);
+        JPanel tipoPanel = createLabeledField(tipoLabel, tipoComboBox);
         
         crearBoton = new JButton("Crear");
-        crearBoton.addActionListener(new PanelCrearAlumnoListener(this,panelManager));
+        crearBoton.addActionListener(new PanelCrearAlumnoListener(this, panelManager));
         cancelarBoton = new JButton("Cancelar");
         cancelarBoton.addActionListener(new PanelCrearAlumnoListener(this, panelManager));
         JPanel botoneraPanel = new JPanel();
         botoneraPanel.setLayout(new FlowLayout());
         botoneraPanel.add(crearBoton);
         botoneraPanel.add(cancelarBoton);
-        
 
         add(Box.createVerticalStrut(10)); 
         add(nombrePanel);
@@ -103,7 +104,7 @@ public class PanelCrearAlumno extends JPanel{
         usuario.setNombreDeUsuario(nombreDeUsuarioCampo.getText());
         usuario.setEmail(emailCampo.getText());
         usuario.setContrasenia(contraseniaCampo.getText());
-        usuario.setTipo(tipoCampo.getText());
+        usuario.setTipo((String) tipoComboBox.getSelectedItem());
         return usuario;
     }
 	
@@ -113,6 +114,15 @@ public class PanelCrearAlumno extends JPanel{
         panel.add(label);
         panel.add(Box.createHorizontalStrut(10));
         panel.add(textField);
+        return panel;
+	}
+	
+	private JPanel createLabeledField(JLabel label, JComboBox<String> comboBox) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        panel.add(label);
+        panel.add(Box.createHorizontalStrut(10));
+        panel.add(comboBox);
         return panel;
 	}
 	
@@ -131,5 +141,6 @@ public class PanelCrearAlumno extends JPanel{
 	    nombreDeUsuarioCampo.setText("");
 	    emailCampo.setText("");
 	    contraseniaCampo.setText("");
+	    tipoComboBox.setSelectedItem("alm");
 	}
 }

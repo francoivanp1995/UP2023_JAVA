@@ -33,6 +33,7 @@ public class LibreriaValidaciones {
 		this.valorPositivo = new ImplementacionValidarValorPositivo();
 		this.valorNegativo = new ImplementacionValidarValorNegativo();
 		this.validaCamposUsuario = new ImplementacionValidacionCamposUsuario();
+		this.validaCamposCurso = new ImplementacionValidacionCamposCurso();
 	}
 	
 	public void validarLongitudTextoMax(String texto, int max)throws ValidationTextoException {

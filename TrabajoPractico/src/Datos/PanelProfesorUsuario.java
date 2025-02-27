@@ -6,13 +6,15 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Presentacion.PanelOpcionesAlumnoProfesor;
+import Presentacion.PanelOpcionesCursoProfesor;
 import Presentacion.PanelManager;
 
 public class PanelProfesorUsuario extends JPanel {
 
 	protected PanelManager panelManager;
-	protected BotonesOpcionesAlumnoProfesor botonesOpcionesAlumnoProfesor;
-	protected BotonesOpcionesCursoProfesor botonesOpcionesCursoProfesor;
+	protected PanelOpcionesAlumnoProfesor botonesOpcionesAlumnoProfesor;
+	protected PanelOpcionesCursoProfesor botonesOpcionesCursoProfesor;
 	protected BotoneraPanel botoneraPanel;
 	
 	public PanelProfesorUsuario(PanelManager panelManager) {
@@ -21,9 +23,9 @@ public class PanelProfesorUsuario extends JPanel {
 		this.setLayout(new GridLayout(4,4));
 		
 		JLabel cursoLabel = new JLabel("Cursos");
-		botonesOpcionesCursoProfesor = new BotonesOpcionesCursoProfesor(panelManager);
+		botonesOpcionesCursoProfesor = new PanelOpcionesCursoProfesor(panelManager);
 		JLabel alumnoLabel = new JLabel("Alumnos");
-		botonesOpcionesAlumnoProfesor = new BotonesOpcionesAlumnoProfesor(panelManager);
+		botonesOpcionesAlumnoProfesor = new PanelOpcionesAlumnoProfesor(panelManager);
 		
 //		No necesito la botonera todavia
 //		botoneraPanel = new BotoneraPanel(this.panelManager);

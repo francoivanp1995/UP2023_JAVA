@@ -1,4 +1,4 @@
-package Datos;
+package Presentacion;
 
 import java.awt.GridLayout;
 
@@ -6,16 +6,16 @@ import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import Presentacion.PanelManager;
+import Datos.BotonesOpciones;
 
-public class BotonesOpcionesAlumnoProfesor extends BotonesOpciones{
+public class PanelOpcionesAlumnoProfesor extends BotonesOpciones{
 	
 	protected JButton asistenciaBoton;
 	protected JButton calificacionesBoton;
 	protected JButton seguimientoProgresoBoton;
 	protected JButton comunicacionBoton;
 
-	public BotonesOpcionesAlumnoProfesor(PanelManager panelManager) {
+	public PanelOpcionesAlumnoProfesor(PanelManager panelManager) {
 		super(panelManager);
 	}
 
